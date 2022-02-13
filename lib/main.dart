@@ -1,8 +1,8 @@
-import 'registration_page.dart';
+import 'pizza_calc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const RegistrationPage());
+  runApp(const PizzaCalc());
 }
 
 class AuthPage extends StatelessWidget {
@@ -33,7 +33,7 @@ class AuthPage extends StatelessWidget {
               image: DecorationImage( //--картинка
                 image: AssetImage('assets/bg1.jpg'),  //--ассет картинки
                 fit: BoxFit.cover,  //--заполнение вида постер
-              )
+              ),
             ),
             width: double.infinity,
             height: double.infinity,
@@ -46,6 +46,7 @@ class AuthPage extends StatelessWidget {
                   height: 83,
                   child: Image( //--картинка лого пиццы
                     image: AssetImage('assets/pizza_logo.png'), //--ассет картинки
+
                   ),
                 ),
                 const SizedBox(height: 20,),
