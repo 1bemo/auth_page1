@@ -77,7 +77,7 @@ class RegistrationPage extends StatelessWidget {
                     fillColor: Color(0xFFeceff1),
                     enabledBorder: _borderStyle,
                     focusedBorder: _borderStyle,
-                    prefix: Text('+7 '),
+                    prefix: Text('+7 ', style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 0.4)),),
                   ),
                 ),
 
