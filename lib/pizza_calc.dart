@@ -11,12 +11,54 @@ class PizzaCalc extends StatefulWidget {
 enum Sauces {hot, sweetAndSour, cheese}
 
 class _PizzaCalcState extends State<PizzaCalc> {
+  Sauces? _currentSauce = Sauces.hot; //соус по умолчанию
+  bool _switchAddCheese = true; //доп сыр
+  double _sliderVal = 5;  //шаг слайдера как ориентир размера пиццы
+  bool _slim = false; //тонкое тесто
+  int _stoim = 0; //общая стоимость
 
-  //соус по умолчанию
-  Sauces? _currentSauce = Sauces.hot;
+  //подсчет стоимости
+  int _stoimost() {
+    int _dopStoim = _sliderVal.round();
 
-  //шаг слайдера
-  double _sliderVal = 5;
+    //доп стоимость за размер
+    switch (_dopStoim) {
+      case 0:
+        _dopStoim += 50;
+        break;
+      case 5:
+        _dopStoim += 95;
+        break;
+      case 10:
+        _dopStoim += 140;
+        break;
+      case 15:
+        _dopStoim += 185;
+        break;
+    }
+
+    //доп стоимость за вид соуса
+    switch (_currentSauce) {
+      case Sauces.hot:
+        _dopStoim += 20;
+        break;
+      case Sauces.sweetAndSour:
+        _dopStoim += 30;
+        break;
+      case Sauces.cheese:
+        _dopStoim += 45;
+        break;
+    }
+
+    _stoim = _dopStoim + 200;
+
+    if (_slim) _stoim += 40;  //тонкое тесто + 40р
+    if (_switchAddCheese) _stoim += 50; //доп сыр + 50р
+
+
+
+    return _stoim;
+  }
 
   //ф-я подписи слайдера
   String sizePizzaText (sliderVal) {
@@ -35,8 +77,6 @@ class _PizzaCalcState extends State<PizzaCalc> {
       _currentSauce = val;
     });
   }
-
-  bool _switchAddCheese = true;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +130,12 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         SlidingSwitch(
                           value: false,
                           width: 300,
-                          onChanged: (_) {},
+                          onChanged: (bool val) {
+                            _slim = val;
+                            setState(() {
+                              _stoimost();
+                            });
+                          },
                           height: 34,
                           animationDuration: const Duration(milliseconds: 50),
                           onTap: () {},
@@ -131,6 +176,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           onChanged: (double val) {
                             setState(() {
                               _sliderVal = val;
+                              _stoimost();
                             });
                           },
                         ),
@@ -217,6 +263,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                                   onChanged: (val){
                                     setState(() {
                                       _switchAddCheese = !_switchAddCheese;
+                                      _stoimost();
                                     });
                                   }
                               ),
@@ -247,9 +294,10 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               color: Color(0xfff0dfd5),
                               borderRadius: BorderRadius.all(Radius.circular(36))
                           ),
-                          child: const Center(
-                            child: Text('',
-                                  style: TextStyle(
+                          child: Center(
+                            child: Text(
+                                  '${_stoimost().toString()} руб',
+                                  style: const TextStyle(
                                       color: Color.fromRGBO(92, 37, 7, 0.8)
                                   ),
                                 ),
@@ -258,7 +306,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
 
                         //кнопка заказать
                         Container(
-                          margin: const EdgeInsets.only(top: 20),
+                          margin: const EdgeInsets.only(top: 20, bottom: 30),
                           width: 154,
                           height: 42,
                           child: ElevatedButton(
