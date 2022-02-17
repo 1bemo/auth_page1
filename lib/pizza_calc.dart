@@ -48,6 +48,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
       case Sauces.cheese:
         _dopStoim += 45;
         break;
+      default:
+        break;
     }
 
     _stoim = _dopStoim + 200;
