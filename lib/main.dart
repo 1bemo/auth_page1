@@ -1,8 +1,10 @@
-import 'pizza_calc.dart';
 import 'package:flutter/material.dart';
+import 'registration_page.dart';  //регистрация
+import 'pizza_calc.dart'; //калькулятор пиццы
+import 'app_bar_screen.dart';
 
 void main() {
-  runApp(const PizzaCalc());
+  runApp(const AppBarScreen());
 }
 
 class AuthPage extends StatelessWidget {

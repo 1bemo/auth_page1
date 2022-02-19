@@ -100,8 +100,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                       image: AssetImage('assets/pizza_animation.gif'),
                     ),
                   ),
-                  SizedBox(
-                    width: 300,
+                  FractionallySizedBox(
+                    widthFactor: 0.9,
                     child: Column(
                       children: [
                         //текст калькулятор пиццы
@@ -206,10 +206,13 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             onChanged: _selectSauce,
                             visualDensity: const VisualDensity(horizontal: -4, vertical: -3.0),
                         ),
-                        Container(
-                          width: 200,
-                          height: 1,
-                          color: const Color(0xFFc2b0a7),
+                        FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            //width: 200,
+                            height: 1,
+                            color: const Color(0xFFc2b0a7),
+                          ),
                         ),
                         RadioListTile<Sauces>(
                             activeColor: const Color(0xFFc96630),
@@ -219,10 +222,13 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             onChanged: _selectSauce,
                             visualDensity: const VisualDensity(horizontal: -4, vertical: -3.0),
                         ),
-                        Container(
-                          width: 200,
-                          height: 1,
-                          color: const Color(0xFFc2b0a7),
+                        FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            width: 200,
+                            height: 1,
+                            color: const Color(0xFFc2b0a7),
+                          ),
                         ),
                         RadioListTile<Sauces>(
                             activeColor: const Color(0xFFc96630),
@@ -232,11 +238,14 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             onChanged: _selectSauce,
                             visualDensity: const VisualDensity(horizontal: -4, vertical: -3.0),
                         ),
-                        Container(
-                          width: 200,
-                          height: 1,
-                          color: const Color(0xFFc2b0a7),
-                          margin: const EdgeInsets.only(bottom: 10),
+                        FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            width: 200,
+                            height: 1,
+                            color: const Color(0xFFc2b0a7),
+                            margin: const EdgeInsets.only(bottom: 10),
+                          ),
                         ),
                         
                         //Доп-опция
