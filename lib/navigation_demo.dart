@@ -7,6 +7,7 @@ class NavigationDemo extends StatefulWidget {
   _NavigationDemoState createState() => _NavigationDemoState();
 }
 
+//-----------главная отрисовка
 class _NavigationDemoState extends State<NavigationDemo> {
   @override
 
@@ -56,7 +57,7 @@ Widget navDrawer(context) => Drawer(  //отдельно вынесенные н
   ],),
 );
 
-class MainScreen extends StatelessWidget{ //первыое окно в виде класса
+class MainScreen extends StatelessWidget{ //-----первый экран в виде класса
   const MainScreen({Key? key}) : super(key:key);
 
   @override
@@ -71,7 +72,7 @@ class MainScreen extends StatelessWidget{ //первыое окно в виде 
   }
 }
 
-class SecondScreen extends StatelessWidget{ //второй экрна в виде класса
+class SecondScreen extends StatelessWidget{ //-----второй экрн в виде класса
   const SecondScreen({Key? key}) : super(key:key);
 
   @override

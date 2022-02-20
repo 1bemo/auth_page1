@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+//--color[900]
+const _colorOrangeDeep = Color(0xffe65100);
+
+//--color dark brown
+const _colorBrownDark = Color(0xff4e342e);
+
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
 
@@ -14,8 +20,7 @@ class RegistrationPage extends StatelessWidget {
         )
     );
 
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         body: Center(
           child: SizedBox(
             width: 300,
@@ -31,12 +36,12 @@ class RegistrationPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(5),
                         child: const Icon(
-                          Icons.account_circle_rounded,color: Color.fromRGBO(92, 37, 7, 0.7),
+                          Icons.account_circle_rounded,color: _colorBrownDark,
                         ),
                       ),
                       const Text(
                         'Регистрация',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color.fromRGBO(92, 37, 7, 0.7)),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: _colorBrownDark),
                       ),
                     ],
                   ),
@@ -46,7 +51,7 @@ class RegistrationPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 15, bottom: 7),
                   height: 2,
-                  color: const Color(0xFFc4c4c4),
+                  color: _colorBrownDark,
                 ),
 
                 //Текст подсказка
@@ -65,7 +70,7 @@ class RegistrationPage extends StatelessWidget {
                   child:
                     const Text(
                       'Телефон',
-                      style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 0.6)),
+                      style: TextStyle(fontSize: 16, color: _colorBrownDark),
                     ),
                 ),
 
@@ -88,7 +93,7 @@ class RegistrationPage extends StatelessWidget {
                   child:
                   const Text(
                     'Почта',
-                    style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 0.6)),
+                    style: TextStyle(fontSize: 16, color: _colorBrownDark),
                   ),
                 ),
 
@@ -131,18 +136,29 @@ class RegistrationPage extends StatelessWidget {
                     onPressed: (){},
                     child: const Text('Отправить код', style: TextStyle(fontSize: 16),),
                     style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFFc96630),
+                      primary: _colorOrangeDeep,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22),
                       ),
                     ),
                   ),
                 ),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: InkWell(
+                    child: const Text('Вырнуться назад', style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 0.5),
+                      decoration: TextDecoration.underline
+                    ),),
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                )
               ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

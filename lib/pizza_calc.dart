@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 
+//--color[900]
+const _colorOrangeDeep = Color(0xffe65100);
+
+//--color dark brown
+const _colorBrownDark = Color(0xff4e342e);
+
 class PizzaCalc extends StatefulWidget {
   const PizzaCalc({Key? key}) : super(key: key);
 
@@ -82,8 +88,18 @@ class _PizzaCalcState extends State<PizzaCalc> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+        appBar: AppBar(
+          title: RichText(
+          text: const TextSpan(
+              children: [
+                TextSpan(text: 'PIZZA ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                TextSpan(text: 'Калькулятор')
+              ]
+          ),
+        ),
+          backgroundColor: Colors.orange[900],
+          toolbarHeight: 50,),
         backgroundColor: Colors.white,
         body: Center(
           child: SingleChildScrollView(
@@ -111,7 +127,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             'Калькулятор пиццы',
                             style: TextStyle(
                                 fontSize: 30,
-                                color: Color.fromRGBO(92, 37, 7, 0.8),
+                                color: _colorBrownDark,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -123,7 +139,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             'Выберите параметры:',
                             style: TextStyle(
                                 fontSize: 16,
-                                color: Color.fromRGBO(92, 37, 7, 0.8),
+                                color: _colorBrownDark,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -148,7 +164,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           colorOn: const Color(0xffffffff),
                           colorOff: const Color(0xffffffff),
                           background: const Color(0xfff0dfd5),
-                          buttonColor: const Color(0xFFc96630),
+                          buttonColor: _colorOrangeDeep,
                           inactiveColor: const Color.fromRGBO(0, 0, 0, 0.4),
                         ),
 
@@ -160,7 +176,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Размер:',
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: Color.fromRGBO(92, 37, 7, 0.8),
+                                  color: _colorBrownDark,
                                   fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -169,7 +185,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
 
                         //Слайдер
                         Slider(
-                          activeColor: const Color(0xFFc96630),
+                          activeColor: _colorOrangeDeep,
                           inactiveColor: const Color(0xFFc2b0a7),
                           value: _sliderVal,
                           max: 15,
@@ -191,7 +207,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Соус:',
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Color.fromRGBO(92, 37, 7, 0.8),
+                                color: _colorBrownDark,
                                 fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -199,8 +215,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         ),
 
                         RadioListTile<Sauces>(
-                            activeColor: const Color(0xFFc96630),
-                            title: const Text('Острый', style: TextStyle(color: Color.fromRGBO(92, 37, 7, 0.8)),),
+                            activeColor: _colorOrangeDeep,
+                            title: const Text('Острый', style: TextStyle(color: _colorBrownDark),),
                             value: Sauces.hot,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -215,8 +231,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           ),
                         ),
                         RadioListTile<Sauces>(
-                            activeColor: const Color(0xFFc96630),
-                            title: const Text('Кисло-сладкий', style: TextStyle(color: Color.fromRGBO(92, 37, 7, 0.8)),),
+                            activeColor: _colorOrangeDeep,
+                            title: const Text('Кисло-сладкий', style: TextStyle(color: _colorBrownDark),),
                             value: Sauces.sweetAndSour,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -231,8 +247,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           ),
                         ),
                         RadioListTile<Sauces>(
-                            activeColor: const Color(0xFFc96630),
-                            title: const Text('Сырный',  style: TextStyle(color: Color.fromRGBO(92, 37, 7, 0.8)),),
+                            activeColor: _colorOrangeDeep,
+                            title: const Text('Сырный',  style: TextStyle(color: _colorBrownDark),),
                             value: Sauces.cheese,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -247,7 +263,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             margin: const EdgeInsets.only(bottom: 10),
                           ),
                         ),
-                        
+
                         //Доп-опция
                         Container(
                           width: 300,
@@ -261,15 +277,15 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             children:  [
                               const Icon(
                                   Icons.local_pizza_outlined,
-                                color: Color.fromRGBO(92, 37, 7, 0.8),
+                                color: _colorBrownDark,
                               ),
                               const Text('Дополнительный сыр',
                                 style: TextStyle(
-                                    color: Color.fromRGBO(92, 37, 7, 0.8)
+                                    color: _colorBrownDark
                                 ),
                               ),
                               Switch(
-                                  activeColor: const Color(0xFFc96630),
+                                  activeColor: _colorOrangeDeep,
                                   value: _switchAddCheese,
                                   onChanged: (val){
                                     setState(() {
@@ -290,7 +306,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Стоимость:',
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: Color.fromRGBO(92, 37, 7, 0.8),
+                                  color: _colorBrownDark,
                                   fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -309,7 +325,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             child: Text(
                                   '${_stoimost().toString()} руб',
                                   style: const TextStyle(
-                                      color: Color.fromRGBO(92, 37, 7, 0.8)
+                                      color: _colorBrownDark
                                   ),
                                 ),
                           ),
@@ -324,7 +340,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             onPressed: (){},
                             child: const Text('Заказать', style: TextStyle(fontSize: 16),),
                             style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFFc96630),
+                              primary: _colorOrangeDeep,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(22),
                               ),
@@ -339,7 +355,6 @@ class _PizzaCalcState extends State<PizzaCalc> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
