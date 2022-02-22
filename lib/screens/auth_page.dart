@@ -1,6 +1,6 @@
-import 'package:auth_page/main_page.dart';
-import 'package:auth_page/profile_page.dart';
-import 'package:auth_page/settings_screen.dart';
+import 'main_page.dart';
+import 'profile_page.dart';
+import 'settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'pizza_calc.dart';
 import 'registration_page.dart';
