@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/strings.dart';
 
 class ThemeDemoApp extends StatelessWidget {
   const ThemeDemoApp({Key? key}) : super(key: key);
@@ -24,12 +25,37 @@ class _MyThemeDemoScreenState extends State<MyThemeDemoScreen> {
   double _currentSliderValue = 20;
   //bool _isDarkTheme = false;
 
-  Widget _navigationDraw() => const Drawer(
-    backgroundColor: Colors.amber,
+  Widget _navigationDraw() => Drawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        DrawerHeader(
+          decoration: const BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: SizedBox(
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                 SizedBox(height: 50,width: 50,child: Placeholder(color: Colors.black,)),
+                 Text('Навигация по Flutter')
+              ],
+            ),
+          ),
+        )
+      ],
+    ),
   );
 
   PreferredSizeWidget _appBar() => AppBar(
-    backgroundColor: Colors.amberAccent,
+    title: const Text('Демо темы'),
+    actions: [
+      IconButton(onPressed: (){}, icon: const Icon(Icons.add_alert)),
+      IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
+    ],
+    backgroundColor: Theme.of(context).colorScheme.secondary,
   );
 
   @override
@@ -59,7 +85,7 @@ class _MyThemeDemoScreenState extends State<MyThemeDemoScreen> {
                 ],
               ),
               ElevatedButton(onPressed: (){}, child: const Text('Войти')),
-
+              const Text(Strings.longBodyText),
               Slider(
                   value: _currentSliderValue,
                   max: 100,
