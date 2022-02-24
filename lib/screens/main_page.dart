@@ -1,9 +1,5 @@
 import 'package:auth_page/utils/drawer_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:auth_page/utils/global_theme.dart';
-
-//--color[900]
-const _colorOrangeDeep = Color(0xffe65100);
 
 class MainPageScreen extends StatefulWidget {
   const MainPageScreen({Key? key}) : super(key: key);
@@ -32,7 +28,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                 icon: const Icon(Icons.notifications_active)
               )
             ],
-            backgroundColor: _colorOrangeDeep,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             toolbarHeight: 50,
           ),
           drawer: navDrawer(context),

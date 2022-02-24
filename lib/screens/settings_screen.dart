@@ -1,10 +1,5 @@
+import 'package:auth_page/utils/global_theme.dart';
 import 'package:flutter/material.dart';
-
-//--color[900]
-const _colorOrangeDeep = Color(0xffe65100);
-
-//--color dark brown
-const _colorBrownDark = Color(0xff4e342e);
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -24,15 +19,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   static const List<Widget> _listTexts = <Widget>[
     Text(
       'Основные настройки приложения',
-      style: TextStyle(color: _colorBrownDark),
+      style: TextStyle(color: colorBrownDark),
     ),
     Text(
       'Настройки отображения',
-      style: TextStyle(color: _colorBrownDark),
+      style: TextStyle(color: colorBrownDark),
     ),
     Text(
       'О приложении. Версия',
-      style: TextStyle(color: _colorBrownDark),
+      style: TextStyle(color: colorBrownDark),
     ),
   ];
 
@@ -54,7 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             label: 'О приложении',
           ),
         ],
-        backgroundColor: _colorOrangeDeep,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         currentIndex: _currentIndex,
         selectedItemColor: Colors.white,
         unselectedItemColor: const Color.fromRGBO(0, 0, 0, 0.4),
@@ -65,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           fontWeight: FontWeight.normal,
           fontSize: 18
         ),),
-        backgroundColor: _colorOrangeDeep,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         toolbarHeight: 50,
         actions: [
           TextButton(

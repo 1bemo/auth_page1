@@ -93,7 +93,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
               ]
           ),
         ),
-          backgroundColor: Colors.orange[900],
+          backgroundColor: Theme.of(context).colorScheme.primary,
           toolbarHeight: 50,),
         body: Center(
           child: SingleChildScrollView(
@@ -125,12 +125,9 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         //текст выберите параметры
                         Container(
                           margin: const EdgeInsets.only(bottom: 15),
-                          child: const Text(
+                          child: Text(
                             'Выберите параметры:',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: colorBrownDark,
-                                fontWeight: FontWeight.w600),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
 
@@ -162,13 +159,9 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         Container(
                           width: 300,
                             margin: const EdgeInsets.only(top: 25),
-                            child: const Text(
+                            child: Text(
                               'Размер:',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: colorBrownDark,
-                                  fontWeight: FontWeight.w600
-                              ),
+                              style: Theme.of(context).textTheme.headline1,
                               textAlign: TextAlign.left
                             ),
                         ),
@@ -193,13 +186,9 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         Container(
                           width: 300,
                           margin: const EdgeInsets.only(top: 15, bottom: 5),
-                          child: const Text(
+                          child: Text(
                               'Соус:',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: colorBrownDark,
-                                fontWeight: FontWeight.w600
-                              ),
+                              style: Theme.of(context).textTheme.headline1,
                               textAlign: TextAlign.left
                           ),
                         ),

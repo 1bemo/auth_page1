@@ -16,8 +16,8 @@ ThemeData globalOrangeTheme() => ThemeData(
     ),
 
     textTheme: const TextTheme( //--тема текста
-      //--стиль ссылок
-      headline1: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: colorBrownDark,),
+      //--большие заголовки
+      headline1: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: colorBrownDark,),
       //--заголовки
       headline2: TextStyle(fontSize: 18, color: colorBrownDark,),
       //--большие заголовки
