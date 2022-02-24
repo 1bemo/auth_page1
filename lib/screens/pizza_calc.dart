@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_switch/sliding_switch.dart';
-
-//--color[900]
-const _colorOrangeDeep = Color(0xffe65100);
-
-//--color dark brown
-const _colorBrownDark = Color(0xff4e342e);
+import 'package:auth_page/utils/global_theme.dart';
 
 class PizzaCalc extends StatefulWidget {
   const PizzaCalc({Key? key}) : super(key: key);
@@ -100,12 +95,10 @@ class _PizzaCalcState extends State<PizzaCalc> {
         ),
           backgroundColor: Colors.orange[900],
           toolbarHeight: 50,),
-        backgroundColor: Colors.white,
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage('assets/bg1.jpg'))),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
                   //картинка пиццы
@@ -123,12 +116,9 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         //текст калькулятор пиццы
                         Container(
                           margin: const EdgeInsets.only(top: 10),
-                          child: const Text(
+                          child: Text(
                             'Калькулятор пиццы',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: _colorBrownDark,
-                                fontWeight: FontWeight.w600),
+                            style: Theme.of(context).textTheme.headline3
                           ),
                         ),
 
@@ -139,7 +129,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             'Выберите параметры:',
                             style: TextStyle(
                                 fontSize: 16,
-                                color: _colorBrownDark,
+                                color: colorBrownDark,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -164,7 +154,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           colorOn: const Color(0xffffffff),
                           colorOff: const Color(0xffffffff),
                           background: const Color(0xfff0dfd5),
-                          buttonColor: _colorOrangeDeep,
+                          buttonColor: Theme.of(context).colorScheme.primary,
                           inactiveColor: const Color.fromRGBO(0, 0, 0, 0.4),
                         ),
 
@@ -176,7 +166,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Размер:',
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: _colorBrownDark,
+                                  color: colorBrownDark,
                                   fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -185,7 +175,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
 
                         //Слайдер
                         Slider(
-                          activeColor: _colorOrangeDeep,
+                          activeColor: Theme.of(context).colorScheme.primary,
                           inactiveColor: const Color(0xFFc2b0a7),
                           value: _sliderVal,
                           max: 15,
@@ -207,7 +197,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Соус:',
                               style: TextStyle(
                                 fontSize: 18,
-                                color: _colorBrownDark,
+                                color: colorBrownDark,
                                 fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -215,8 +205,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                         ),
 
                         RadioListTile<Sauces>(
-                            activeColor: _colorOrangeDeep,
-                            title: const Text('Острый', style: TextStyle(color: _colorBrownDark),),
+                            activeColor: Theme.of(context).colorScheme.primary,
+                            title: const Text('Острый', style: TextStyle(color: colorBrownDark),),
                             value: Sauces.hot,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -231,8 +221,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           ),
                         ),
                         RadioListTile<Sauces>(
-                            activeColor: _colorOrangeDeep,
-                            title: const Text('Кисло-сладкий', style: TextStyle(color: _colorBrownDark),),
+                            activeColor: Theme.of(context).colorScheme.primary,
+                            title: const Text('Кисло-сладкий', style: TextStyle(color: colorBrownDark),),
                             value: Sauces.sweetAndSour,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -247,8 +237,8 @@ class _PizzaCalcState extends State<PizzaCalc> {
                           ),
                         ),
                         RadioListTile<Sauces>(
-                            activeColor: _colorOrangeDeep,
-                            title: const Text('Сырный',  style: TextStyle(color: _colorBrownDark),),
+                            activeColor: Theme.of(context).colorScheme.primary,
+                            title: const Text('Сырный',  style: TextStyle(color: colorBrownDark),),
                             value: Sauces.cheese,
                             groupValue: _currentSauce,
                             onChanged: _selectSauce,
@@ -277,15 +267,15 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             children:  [
                               const Icon(
                                   Icons.local_pizza_outlined,
-                                color: _colorBrownDark,
+                                color: colorBrownDark,
                               ),
                               const Text('Дополнительный сыр',
                                 style: TextStyle(
-                                    color: _colorBrownDark
+                                    color: colorBrownDark
                                 ),
                               ),
                               Switch(
-                                  activeColor: _colorOrangeDeep,
+                                  activeColor: Theme.of(context).colorScheme.primary,
                                   value: _switchAddCheese,
                                   onChanged: (val){
                                     setState(() {
@@ -306,7 +296,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                               'Стоимость:',
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: _colorBrownDark,
+                                  color: colorBrownDark,
                                   fontWeight: FontWeight.w600
                               ),
                               textAlign: TextAlign.left
@@ -325,7 +315,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             child: Text(
                                   '${_stoimost().toString()} руб',
                                   style: const TextStyle(
-                                      color: _colorBrownDark
+                                      color: colorBrownDark
                                   ),
                                 ),
                           ),
@@ -340,7 +330,7 @@ class _PizzaCalcState extends State<PizzaCalc> {
                             onPressed: (){},
                             child: const Text('Заказать', style: TextStyle(fontSize: 16),),
                             style: ElevatedButton.styleFrom(
-                              primary: _colorOrangeDeep,
+                              primary: Theme.of(context).colorScheme.primary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(22),
                               ),

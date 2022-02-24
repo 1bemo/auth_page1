@@ -1,3 +1,5 @@
+import 'package:auth_page/utils/drawer_settings.dart';
+import '../utils/global_theme.dart';
 import 'main_page.dart';
 import 'profile_page.dart';
 import 'settings_screen.dart';
@@ -15,126 +17,8 @@ class AuthPage extends StatefulWidget {
 
 /////////___________Набор глобальных переменных___________////////
 
-//--color[900]
-const _colorOrangeDeep = Color(0xffe65100);
-
-//--color dark brown
-const _colorBrownDark = Color(0xff4e342e);
-
-//--настройки рамок
-const borderStyle = OutlineInputBorder( //--переменной присваиваем ф-ю настроек рамки
-    borderRadius: BorderRadius.all( //--радиус сглаживания рамки. All - все углы
-        Radius.circular(36) //--ф-я высчитывания угла 36 градусов
-    ),
-    borderSide: BorderSide( //--сторона рамки
-        color: _colorOrangeDeep, width: 2  //--цвет рамки и ее толщина
-    )
-);
-
-//--стиль текста отдельной переменной
-const linkTextStyle = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-    color: _colorBrownDark
-);
-
 //--переменная месенджера
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
-
-//--настройки дравера отдельно
-Widget navDrawer(context) => Drawer(
-
-  child: ListView(
-    padding: EdgeInsets.zero,
-    children: [
-      DrawerHeader(  //шапка в выдвигающимся шкафу
-        decoration: const BoxDecoration(
-            color: _colorOrangeDeep
-        ),
-        child: Container(
-          alignment: Alignment.centerLeft,
-          height: 200,  //высота контейнера
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,  //выравнивание по главной оси
-            crossAxisAlignment: CrossAxisAlignment.center,  //выравнивание по вспомогательное оси
-            children: [
-              Container(
-                height: 100,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(50)
-                  ),
-                ),
-                //картинка из внешнего источника
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Image(
-                      image: AssetImage('assets/logo_pizza.png'),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: (){
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/profileScreen');
-                          },
-                          icon: const Icon(
-                            Icons.portrait_outlined,
-                            size: 30,
-                          ),
-                          tooltip: 'Профиль',
-                        ),
-                        const Text('Профиль',style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal
-                        ),),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      ListTile(
-        leading: const Icon(Icons.accessibility,color: _colorBrownDark,),
-        title: const Text('Авторизация / Регистрация',style: TextStyle(color: _colorBrownDark),),
-        onTap: (){
-          Navigator.pop(context);
-        },
-      ),
-      const Divider(color: _colorBrownDark,indent: 20,endIndent: 20,),
-      ListTile(
-        title: const Text('Главная страница',style: TextStyle(color: _colorBrownDark),),
-        onTap: (){
-          Navigator.pop(context);
-          Navigator.pushNamed(context, '/mainScreen');
-        },
-        leading: const Icon(Icons.local_pizza,color: _colorBrownDark,),
-      ),
-      ListTile(
-        title: const Text('Калькулятор пиццы',style: TextStyle(color: _colorBrownDark),),
-        onTap: (){
-          Navigator.pop(context);
-          Navigator.pushNamed(context, '/pizzaCalc');
-        },
-        leading: const Icon(Icons.calculate,color: _colorBrownDark,),
-      ),
-      const Divider(color: _colorBrownDark,indent: 20,endIndent: 20,),
-      ListTile(
-        leading: const Icon(Icons.settings,color: _colorBrownDark,),
-        title: const Text('Настройки',style: TextStyle(color: _colorBrownDark),),
-        onTap: (){
-          Navigator.pop(context);
-          Navigator.pushNamed(context, '/settingsScreen');
-        },
-      )
-    ],
-  ),
-);
 
 
 /////////___________Главный класс___________////////
@@ -144,6 +28,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      theme: globalOrangeTheme(),
       scaffoldMessengerKey: _messengerKey,
       initialRoute: '/',
       routes: {
@@ -171,6 +56,17 @@ class _AuthRegScreenState extends State<AuthRegScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    //--настройки рамок
+    final OutlineInputBorder _borderStyle = OutlineInputBorder(
+        borderRadius: const BorderRadius.all(
+            Radius.circular(36)
+        ),
+        borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.primary, width: 2
+        )
+    );
+
     return Scaffold(
         appBar: AppBar(
           title: RichText(
@@ -181,7 +77,7 @@ class _AuthRegScreenState extends State<AuthRegScreen> {
                 ]
             ),
           ),
-          backgroundColor: Colors.orange[900],
+          backgroundColor: Theme.of(context).colorScheme.primary,
           toolbarHeight: 50,
         ),
         drawer: navDrawer(context), //--отдельно вынесеный дравер
@@ -208,32 +104,29 @@ class _AuthRegScreenState extends State<AuthRegScreen> {
                   ),
                 ),
                 const SizedBox(height: 20,),
-                const Text('Введите логин в виде 10 цифр номера телефона',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xff4e342e),
-                  ),
+                Text('Введите логин в виде 10 цифр номера телефона',
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20,),
-                const TextField(
+                TextField(
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Color(0xFFe3c7b8),
-                    enabledBorder: borderStyle,
-                    focusedBorder: borderStyle,
+                    fillColor: Theme.of(context).colorScheme.secondary,
+                    enabledBorder: _borderStyle,
+                    focusedBorder: _borderStyle,
                     labelText: 'Телефон',
                   ),
                 ),
                 const SizedBox(height: 20,),
-                const TextField(
+                TextField(
                   obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Color(0xFFe3c7b8),
-                    enabledBorder: borderStyle,
-                    focusedBorder: borderStyle,
+                    fillColor: Theme.of(context).colorScheme.secondary,
+                    enabledBorder: _borderStyle,
+                    focusedBorder: _borderStyle,
                     labelText: 'Пароль',
                   ),
                 ),
@@ -248,14 +141,14 @@ class _AuthRegScreenState extends State<AuthRegScreen> {
                               duration: Duration(
                                   milliseconds: 500
                               ),
-                              backgroundColor: Color(0xff4e342e),
+                              backgroundColor: snackBarColor,
                               content: Text('Проверка данных и вход')
                           ),
                         );
                       },
                       child: const Text('Войти'),
                       style: ElevatedButton.styleFrom(  //--стиль кнопки
-                        primary: _colorOrangeDeep, //--цвет кнопки
+                        primary: Theme.of(context).colorScheme.primary, //--цвет кнопки
                         shape: RoundedRectangleBorder(  //--изменение формы кнопки (скругленный прямоугольник)
                           borderRadius: BorderRadius.circular(36),//--скругление границы
                         ),
@@ -263,15 +156,15 @@ class _AuthRegScreenState extends State<AuthRegScreen> {
                     )
                 ),
                 const SizedBox(height: 62,),
-                InkWell(child: const Text('Регистрация',
-                  style: linkTextStyle,
+                InkWell(child: Text('Регистрация',
+                  style: Theme.of(context).textTheme.headline1,
                 ), onTap: (){
                   Navigator.pushNamed(context, '/regScreen');
                 },
                 ),
                 const SizedBox(height: 20,),
-                InkWell(child: const Text('Забыли пароль?',
-                  style: linkTextStyle,
+                InkWell(child: Text('Забыли пароль?',
+                  style: Theme.of(context).textTheme.headline1,
                 ), onTap: (){  //ф-я при нажатии (тапе)
                   _messengerKey.currentState!.showSnackBar( //показать снекбар при нажатии
                     const SnackBar(
