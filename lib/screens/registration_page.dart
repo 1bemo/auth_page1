@@ -1,10 +1,5 @@
+import 'package:auth_page/utils/global_theme.dart';
 import 'package:flutter/material.dart';
-
-//--color[900]
-const _colorOrangeDeep = Color(0xffe65100);
-
-//--color dark brown
-const _colorBrownDark = Color(0xff4e342e);
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -36,12 +31,12 @@ class RegistrationPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(5),
                         child: const Icon(
-                          Icons.account_circle_rounded,color: _colorBrownDark,
+                          Icons.account_circle_rounded,color: colorBrownDark,
                         ),
                       ),
-                      const Text(
+                      Text(
                         'Регистрация',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: _colorBrownDark),
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ],
                   ),
@@ -51,7 +46,7 @@ class RegistrationPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 15, bottom: 7),
                   height: 2,
-                  color: _colorBrownDark,
+                  color: colorBrownDark,
                 ),
 
                 //Текст подсказка
@@ -68,9 +63,9 @@ class RegistrationPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 14, bottom: 6),
                   child:
-                    const Text(
+                    Text(
                       'Телефон',
-                      style: TextStyle(fontSize: 16, color: _colorBrownDark),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                 ),
 
@@ -91,9 +86,9 @@ class RegistrationPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 14, bottom: 6),
                   child:
-                  const Text(
+                  Text(
                     'Почта',
-                    style: TextStyle(fontSize: 16, color: _colorBrownDark),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
 
@@ -120,7 +115,7 @@ class RegistrationPage extends StatelessWidget {
 
                 //подсказка 2
                 Container(
-                  margin: const EdgeInsets.only(bottom: 32),
+                  margin: const EdgeInsets.only(bottom: 15),
                   child: const Text(
                     'Изменить пароль можно будет в личном кабинете после регистрации',
                     textAlign: TextAlign.center,
@@ -136,7 +131,7 @@ class RegistrationPage extends StatelessWidget {
                     onPressed: (){},
                     child: const Text('Отправить код', style: TextStyle(fontSize: 16),),
                     style: ElevatedButton.styleFrom(
-                      primary: _colorOrangeDeep,
+                      primary: Theme.of(context).colorScheme.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22),
                       ),
