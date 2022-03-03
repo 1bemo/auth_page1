@@ -13,7 +13,7 @@ ThemeData globalOrangeTheme() => ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.deepOrange,
     ).copyWith(
-        secondary: Colors.white70
+        secondary: Colors.orange[100]
     ),
 
     textTheme: const TextTheme( //--тема текста
