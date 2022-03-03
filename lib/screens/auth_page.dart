@@ -1,4 +1,5 @@
 import 'package:auth_page/utils/drawer_settings.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../utils/global_theme.dart';
 import 'main_page.dart';
 import 'profile_page.dart';

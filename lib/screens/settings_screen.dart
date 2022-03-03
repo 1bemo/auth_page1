@@ -1,5 +1,6 @@
 import 'package:auth_page/utils/global_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -16,16 +17,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _currentIndex = val;
     });
   }
-  static const List<Widget> _listTexts = <Widget>[
-    Text(
-      'Основные настройки приложения',
-      style: TextStyle(color: colorBrownDark),
+  static final List<Widget> _listTexts = <Widget>[
+    Column(
+      children: [
+        const Text(
+          'Основные настройки приложения',
+          style: TextStyle(color: colorBrownDark),
+        ),
+        const Divider(color: Colors.black,height: 2,),
+        Text(
+          'Pushster Text Google Fonts',
+          style: GoogleFonts.pushster(
+              color: Colors.black
+          ),
+        ),
+        Text(
+          'Lato Text Google Fonts',
+          style: GoogleFonts.getFont(
+              'Lato',
+              color: Colors.black
+          ),
+        ),
+        Text(
+          'Smooch Text with Combine',
+          style: GoogleFonts.smooch(
+              textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 5
+              )
+          ),
+        ),
+      ],
     ),
-    Text(
+    const Text(
       'Настройки отображения',
       style: TextStyle(color: colorBrownDark),
     ),
-    Text(
+    const Text(
       'О приложении. Версия',
       style: TextStyle(color: colorBrownDark),
     ),
