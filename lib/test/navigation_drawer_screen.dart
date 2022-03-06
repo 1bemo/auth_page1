@@ -87,7 +87,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.settings),
-                title: const Text('Насройки'),
+                title: const Text('Настройки'),
                 onTap: (){
                   _messengerKey.currentState!.showSnackBar(
                     const SnackBar(
