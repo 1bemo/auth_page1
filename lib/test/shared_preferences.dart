@@ -7,9 +7,9 @@ class SharedPrefScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Shared preferences demo',
+      title: 'Shared preferences демо',
       home: MyHomePage(
-        title: 'Shared preferences demo'
+        title: 'Shared preferences демо'
       ),
     );
   }
@@ -135,11 +135,17 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'Суммарный счетчик'
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Container(
+              margin: const EdgeInsets.only(bottom: 30),
+              child: Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
-            Text('Кооличество кликов за текущий сеанс: $_cnt'),
+            const Text('Кооличество кликов за текущий сеанс:'),
+            Text(
+              '$_cnt',
+              style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
             Container(
               margin: const EdgeInsets.only(top: 60),
               child: TextButton(
