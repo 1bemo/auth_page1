@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.auth_page">
+    <uses-permission android:name="android.permission.INTERNET" /> <!--разрешение на доступ в интернет-->
    <application
         android:label="auth_page"
         android:name="${applicationName}"
